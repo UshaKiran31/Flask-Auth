@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="container">
+    <h1>WELCOME</h1>
+    <!-- Error Alert -->
+    {% if error %}
+    <script>
+        alert("{{ error }}");
+    </script>
+    {% endif %}
+
+    <form id="auth-form" action="{{url_for('login')}}" method="post">
+        <input type="text" name="username" placeholder="username" class="input-field"/>
+        <input type="password" name="password" placeholder="password" class="input-field"/>
+        <input type="submit" value="Login" class="btn btn-login" onclick="setActionForm('login')"/>
+        <input type="button" value="Register" class="btn btn-register" onclick="setActionForm('register')"/>
+    </form>
+</div>
+
+<script>
+    // to check which button is click(login/register) and make actions accordingly 
+
+    function setActionForm(form) {
+    let form1 = document.getElementById('auth-form');
+    if (form === 'login') {
+        form1.action = "{{url_for('login')}}";
+        form1.method = "post";
+        form1.submit();
+    } else if (form === 'register') {
+        form1.action = "{{url_for('register')}}";
+        form1.method = "post";
+        form1.submit();
+    }
+}
+
+</script>
+
+{% endblock %}
