@@ -1,13 +1,13 @@
 from flask import Flask,render_template,redirect,request,session,url_for
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash,check_password_hash
-from flask_scss import Scss
+# from flask_scss import Scss
 
 
 app = Flask(__name__)
 #your secret key
 app.secret_key="3110"
-Scss(app)
+# Scss(app)
 
 # Configure SQL Alchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
